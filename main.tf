@@ -14,7 +14,7 @@ resource "aws_lb" "kafka_nlb" {
 }
 
 resource "aws_lb_target_group" "kafka_nlb_target_group" {
-  count = "var.kafka_broker_count"
+  count = "${var.kafka_broker_count}"
   name = "nlb-tg-kafka-${count.index}"
   port = "${count.index + var.kafka_port}"
   vpc_id = "${var.vpc_id}"
